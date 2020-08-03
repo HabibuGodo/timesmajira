@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "834175666672",
+    "firebase_url": "https://timesmajira.firebaseio.com",
+    "project_id": "timesmajira",
+    "storage_bucket": "timesmajira.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834175666672:android:53effe53b3f2cdb9777535",
+        "android_client_info": {
+          "package_name": "com.example.timesmajira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834175666672-q4jlt7h9g94ajhk0hppcaksljhan14hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVi_mQ5Z0ybDFJy3luIkcxx2TQT8eT-TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834175666672-q4jlt7h9g94ajhk0hppcaksljhan14hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
