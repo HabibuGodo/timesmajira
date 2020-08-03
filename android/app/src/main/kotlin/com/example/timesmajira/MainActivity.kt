@@ -1,4 +1,4 @@
-package com.example.timesmajira
+package com.timesmajira
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

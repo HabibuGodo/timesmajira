@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834175666672:android:cc6ca54d3d5903fb777535",
+        "android_client_info": {
+          "package_name": "com.timesmajira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834175666672-q4jlt7h9g94ajhk0hppcaksljhan14hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVi_mQ5Z0ybDFJy3luIkcxx2TQT8eT-TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834175666672-q4jlt7h9g94ajhk0hppcaksljhan14hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

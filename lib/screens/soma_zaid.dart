@@ -1,20 +1,44 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
+import 'package:timesmajira/services/ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SomaZaidi extends StatelessWidget {
+class SomaZaidi extends StatefulWidget {
   final Map<String, dynamic> postData;
 
-  const SomaZaidi({Key key, @required this.postData}) : super(key: key);
+  SomaZaidi({Key key, @required this.postData});
+  @override
+  _SomaZaidiState createState() => _SomaZaidiState();
+}
+
+class _SomaZaidiState extends State<SomaZaidi> {
+  BannerAd _bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    DisplayAds.initializeAdMob();
+    _bannerAd = DisplayAds.createBannerAd()
+      ..load()
+      ..show();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    _bannerAd?.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     String imageUrl =
-        postData['_embedded']['wp:featuredmedia'][0]['source_url'];
+        widget.postData['_embedded']['wp:featuredmedia'][0]['source_url'];
 
-    String content = postData['content']['rendered'];
+    String content = widget.postData['content']['rendered'];
     //////Date convertion///////////////
-    DateTime formatted = DateTime.parse(postData['modified']);
+    DateTime formatted = DateTime.parse(widget.postData['modified']);
     var formatter = new DateFormat('MMM dd, yyyy');
     String postDate = formatter.format(formatted);
     ////////////////////////////////////
@@ -110,6 +134,9 @@ class SomaZaidi extends StatelessWidget {
                             }
                           },
                         ),
+                        Container(
+                          height:50,
+                        )
                       ],
                     ),
                   ),

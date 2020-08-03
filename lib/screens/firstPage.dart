@@ -1,6 +1,8 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:timesmajira/services/ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './about.dart';
 import './archive.dart';
@@ -16,6 +18,9 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
+  InterstitialAd _interstitialAd;
+  BannerAd _bannerAd;
+
   @override
   void initState() {
     super.initState();
@@ -23,18 +28,26 @@ class _FirstPageState extends State<FirstPage> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    DisplayAds.initializeAdMob();
+    _interstitialAd = DisplayAds.createInterstitialAd()..load();
+    // _bannerAd = DisplayAds.createBannerAd()
+    //   ..load()
+    //   ..show();
   }
 
   @override
-dispose(){
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-  super.dispose();
-}
+  dispose() {
+    _bannerAd?.dispose();
+    _interstitialAd?.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +102,8 @@ dispose(){
                 ),
               ),
               onTap: () {
+                _interstitialAd.show();
+                _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -133,6 +148,8 @@ dispose(){
                 ),
               ),
               onTap: () {
+                _interstitialAd.show();
+                _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -155,6 +172,8 @@ dispose(){
                 ),
               ),
               onTap: () {
+                _interstitialAd.show();
+                _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -177,6 +196,8 @@ dispose(){
                 ),
               ),
               onTap: () {
+                _interstitialAd.show();
+                _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -199,6 +220,8 @@ dispose(){
                 ),
               ),
               onTap: () {
+                _interstitialAd.show();
+                _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(

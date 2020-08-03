@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -9,6 +10,7 @@ import 'package:cache_image/cache_image.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:timesmajira/screens/onlineTV.dart';
 import 'package:timesmajira/screens/search_page.dart';
+import 'package:timesmajira/services/ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:uni_links/uni_links.dart';
 import '../block/home_bloc.dart';
@@ -370,6 +372,19 @@ class WidgetLatestPosts extends StatefulWidget {
 }
 
 class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
+  InterstitialAd _interstitialAd;
+  @override
+  void initState() {
+    super.initState();
+    _interstitialAd = DisplayAds.createInterstitialAd()..load();
+  }
+
+  @override
+  void dispose() {
+    _interstitialAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -432,6 +447,8 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    _interstitialAd.show();
+                    _interstitialAd = DisplayAds.createInterstitialAd()..load();
                     Navigator.push(
                       context,
                       MyCustomRoute(
@@ -507,6 +524,8 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
           } else {
             return GestureDetector(
               onTap: () {
+                _interstitialAd.show();
+                _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
