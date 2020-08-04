@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
     OneSignal.shared
         .promptUserForPushNotificationPermission(fallbackToSettings: true);
 
-    OneSignal.shared.init("6dff6d69-bdc8-4915-aa5b-8365d5461f52", iOSSettings: {
+    OneSignal.shared.init("bae11dca-b0c9-4642-8797-b4691824c2e8", iOSSettings: {
       OSiOSSettings.autoPrompt: false,
       OSiOSSettings.inAppLaunchUrl: true
     });

@@ -372,16 +372,16 @@ class WidgetLatestPosts extends StatefulWidget {
 }
 
 class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
-  InterstitialAd _interstitialAd;
+  // InterstitialAd _interstitialAd;
   @override
   void initState() {
     super.initState();
-    _interstitialAd = DisplayAds.createInterstitialAd()..load();
+    // _interstitialAd = DisplayAds.createInterstitialAd()..load();
   }
 
   @override
   void dispose() {
-    _interstitialAd?.dispose();
+    // _interstitialAd?.dispose();
     super.dispose();
   }
 
@@ -447,8 +447,8 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    _interstitialAd.show();
-                    _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                    // _interstitialAd.show();
+                    // _interstitialAd = DisplayAds.createInterstitialAd()..load();
                     Navigator.push(
                       context,
                       MyCustomRoute(
@@ -524,8 +524,8 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
           } else {
             return GestureDetector(
               onTap: () {
-                _interstitialAd.show();
-                _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                // _interstitialAd.show();
+                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(

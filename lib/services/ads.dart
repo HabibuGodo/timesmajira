@@ -1,6 +1,7 @@
 import 'package:firebase_admob/firebase_admob.dart';
 
-
+//rewarded ad unit
+//ca-app-pub-2296909687310111/8765211100
 class DisplayAds {
   static const String testDevice = "Test";
 
@@ -18,6 +19,7 @@ class DisplayAds {
 
   static BannerAd createBannerAd() {
     return BannerAd(
+      //ca-app-pub-2296909687310111/4470742878
       adUnitId: BannerAd.testAdUnitId,
       targetingInfo: targetingInfo,
       size: AdSize.banner,

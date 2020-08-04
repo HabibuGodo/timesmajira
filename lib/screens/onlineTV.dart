@@ -42,7 +42,7 @@ class _OnlineTvState extends State<OnlineTv> {
     OnlineTvModel onlineTv = await YoutubeAPI.instance
         // mubashara studio : UCXX1WAx4XY7LmEXMLXw_hRA
         //Original TimesMajira Youtube Channel Id: UCxAWoWzTmt1qkA6hRF_mIvg
-        .fetchChannel(channelId: "UCMIolYz6GKYD1Bmn-JZQJmA");
+        .fetchChannel(channelId: "UCxAWoWzTmt1qkA6hRF_mIvg");
     setState(() {
       _onlineTv = onlineTv;
     });

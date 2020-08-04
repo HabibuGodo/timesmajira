@@ -14,21 +14,21 @@ class SomaZaidi extends StatefulWidget {
 }
 
 class _SomaZaidiState extends State<SomaZaidi> {
-  BannerAd _bannerAd;
+  //BannerAd _bannerAd;
 
   @override
   void initState() {
     super.initState();
-    DisplayAds.initializeAdMob();
-    _bannerAd = DisplayAds.createBannerAd()
-      ..load()
-      ..show();
+    // DisplayAds.initializeAdMob();
+    // _bannerAd = DisplayAds.createBannerAd()
+    //   ..load()
+    //   ..show();
   }
 
   @override
   dispose() {
     super.dispose();
-    _bannerAd?.dispose();
+    //_bannerAd?.dispose();
   }
 
   @override
@@ -134,9 +134,10 @@ class _SomaZaidiState extends State<SomaZaidi> {
                             }
                           },
                         ),
-                        Container(
-                          height:50,
-                        )
+                        // Container(
+                        //   //space for ads
+                        //   height:50,
+                        // )
                       ],
                     ),
                   ),

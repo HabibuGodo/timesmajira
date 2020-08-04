@@ -18,8 +18,8 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-  InterstitialAd _interstitialAd;
-  BannerAd _bannerAd;
+  // InterstitialAd _interstitialAd;
+  // BannerAd _bannerAd;
 
   @override
   void initState() {
@@ -28,8 +28,8 @@ class _FirstPageState extends State<FirstPage> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    DisplayAds.initializeAdMob();
-    _interstitialAd = DisplayAds.createInterstitialAd()..load();
+    // DisplayAds.initializeAdMob();
+    // _interstitialAd = DisplayAds.createInterstitialAd()..load();
     // _bannerAd = DisplayAds.createBannerAd()
     //   ..load()
     //   ..show();
@@ -37,8 +37,8 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   dispose() {
-    _bannerAd?.dispose();
-    _interstitialAd?.dispose();
+    // _bannerAd?.dispose();
+    // _interstitialAd?.dispose();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
@@ -102,8 +102,8 @@ class _FirstPageState extends State<FirstPage> {
                 ),
               ),
               onTap: () {
-                _interstitialAd.show();
-                _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                // _interstitialAd.show();
+                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -148,8 +148,8 @@ class _FirstPageState extends State<FirstPage> {
                 ),
               ),
               onTap: () {
-                _interstitialAd.show();
-                _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                // _interstitialAd.show();
+                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -172,8 +172,8 @@ class _FirstPageState extends State<FirstPage> {
                 ),
               ),
               onTap: () {
-                _interstitialAd.show();
-                _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                // _interstitialAd.show();
+                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -196,8 +196,8 @@ class _FirstPageState extends State<FirstPage> {
                 ),
               ),
               onTap: () {
-                _interstitialAd.show();
-                _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                // _interstitialAd.show();
+                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(
@@ -220,8 +220,8 @@ class _FirstPageState extends State<FirstPage> {
                 ),
               ),
               onTap: () {
-                _interstitialAd.show();
-                _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                // _interstitialAd.show();
+                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
                 Navigator.push(
                   context,
                   MyCustomRoute(

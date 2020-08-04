@@ -74,7 +74,9 @@ class PlayerWidget extends StatefulWidget {
 
 class _PlayerWidgetState extends State<PlayerWidget>
     with SingleTickerProviderStateMixin {
-  String streamUrl = "http://5.196.56.208:8308/stream";
+      //bongo : http://173.244.208.77:8000/bongo.mp3
+      //mixtape : http://162.243.173.18:8034/stream
+  String streamUrl = "http://173.244.208.77:8000/bongo.mp3";
 
   bool isPlaying = false;
 
@@ -113,7 +115,7 @@ class _PlayerWidgetState extends State<PlayerWidget>
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Text(
-            "Online Radio",
+            "Timesmajira Radio \n     Coming soon",
             style: TextStyle(fontSize: 28),
           ),
           ClipRRect(
