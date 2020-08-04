@@ -139,32 +139,32 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: CurvedNavigationBar(
-        color: Colors.black,
-        backgroundColor: Colors.white,
-        buttonBackgroundColor: Colors.black,
-        height: 45,
-        items: <Widget>[
-          Icon(Icons.arrow_back_ios, size: 20, color: Colors.orange),
-          Icon(Icons.home, size: 20, color: Colors.orange),
-          Icon(Icons.search, size: 25, color: Colors.orange),
-        ],
-        index: 1,
-        animationDuration: Duration(milliseconds: 200),
-        animationCurve: Curves.bounceInOut,
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.pop(context);
-          } else if (index == 2) {
-            Navigator.push(
-              context,
-              MyCustomRoute(
-                builder: (context) => SearchPage(),
-              ),
-            );
-          } else {}
-        },
-      ),
+      // bottomNavigationBar: CurvedNavigationBar(
+      //   color: Colors.black,
+      //   backgroundColor: Colors.white,
+      //   buttonBackgroundColor: Colors.black,
+      //   height: 45,
+      //   items: <Widget>[
+      //     Icon(Icons.arrow_back_ios, size: 20, color: Colors.orange),
+      //     Icon(Icons.home, size: 20, color: Colors.orange),
+      //     Icon(Icons.search, size: 25, color: Colors.orange),
+      //   ],
+      //   index: 1,
+      //   animationDuration: Duration(milliseconds: 200),
+      //   animationCurve: Curves.bounceInOut,
+      //   onTap: (index) {
+      //     if (index == 0) {
+      //       Navigator.pop(context);
+      //     } else if (index == 2) {
+      //       Navigator.push(
+      //         context,
+      //         MyCustomRoute(
+      //           builder: (context) => SearchPage(),
+      //         ),
+      //       );
+      //     } else {}
+      //   },
+      // ),
     );
   }
 
