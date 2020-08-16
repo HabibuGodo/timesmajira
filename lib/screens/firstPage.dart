@@ -46,7 +46,6 @@ class _FirstPageState extends State<FirstPage> {
       DeviceOrientation.portraitDown,
     ]);
     super.dispose();
-    
   }
 
   @override
@@ -91,7 +90,7 @@ class _FirstPageState extends State<FirstPage> {
             ListTile(
               leading: Icon(
                 Icons.today,
-                color: Colors.black,
+                color: Colors.orange,
                 size: 38,
               ),
               title: Text(
@@ -115,7 +114,7 @@ class _FirstPageState extends State<FirstPage> {
             ListTile(
               leading: Icon(
                 Icons.radio,
-                color: Colors.black,
+                color: Colors.orange,
                 size: 38,
               ),
               title: Text(
@@ -137,7 +136,7 @@ class _FirstPageState extends State<FirstPage> {
             ListTile(
               leading: Icon(
                 Icons.live_tv,
-                color: Colors.black,
+                color: Colors.orange,
                 size: 38,
               ),
               title: Text(
@@ -161,7 +160,7 @@ class _FirstPageState extends State<FirstPage> {
             ListTile(
               leading: Icon(
                 Icons.archive,
-                color: Colors.black,
+                color: Colors.orange,
                 size: 38,
               ),
               title: Text(
@@ -185,7 +184,7 @@ class _FirstPageState extends State<FirstPage> {
             ListTile(
               leading: Icon(
                 Icons.chrome_reader_mode,
-                color: Colors.black,
+                color: Colors.orange,
                 size: 38,
               ),
               title: Text(
@@ -209,7 +208,7 @@ class _FirstPageState extends State<FirstPage> {
             ListTile(
               leading: Icon(
                 Icons.info,
-                color: Colors.black,
+                color: Colors.orange,
                 size: 38,
               ),
               title: Text(
@@ -300,13 +299,17 @@ class WidgetTitle extends StatelessWidget {
                           "assets/icons/instagram.png",
                           width: 35,
                           height: 25,
-                          //color: Colors.black,
+                          color: Colors.orange,
                         ),
                       ),
                       InkWell(
                         onTap: () => _launchInApp(urlFb),
-                        child: Image.asset("assets/icons/facebook.png",
-                            width: 35, height: 22, color: Colors.white),
+                        child: Image.asset(
+                          "assets/icons/facebook.png",
+                          width: 35,
+                          height: 22,
+                          color: Colors.orange,
+                        ),
                       ),
                       InkWell(
                         onTap: () => _launchInApp(urlTwitter),
@@ -314,7 +317,7 @@ class WidgetTitle extends StatelessWidget {
                           "assets/icons/twitter.png",
                           width: 35,
                           height: 18,
-                          color: Colors.white,
+                          color: Colors.orange,
                         ),
                       ),
                       InkWell(
@@ -330,7 +333,7 @@ class WidgetTitle extends StatelessWidget {
                           "assets/icons/youtube.png",
                           width: 23,
                           height: 20,
-                          color: Colors.white,
+                          color: Colors.orange,
                         ),
                       ),
                     ],

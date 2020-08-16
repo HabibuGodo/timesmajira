@@ -4,6 +4,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:cache_image/cache_image.dart';
@@ -79,13 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "assets/icons/instagram.png",
                                 width: 35,
                                 height: 25,
-                                //color: Colors.black,
+                                color: Colors.orange,
                               ),
                             ),
                             InkWell(
                               onTap: () => _launchInApp(urlFb),
                               child: Image.asset("assets/icons/facebook.png",
-                                  width: 35, height: 22, color: Colors.white),
+                                  width: 35, height: 22, color: Colors.orange,),
                             ),
                             InkWell(
                               onTap: () => _launchInApp(urlTwitter),
@@ -93,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "assets/icons/twitter.png",
                                 width: 35,
                                 height: 18,
-                                color: Colors.white,
+                                color : Colors.orange,
                               ),
                             ),
                             InkWell(
@@ -109,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "assets/icons/youtube.png",
                                 width: 23,
                                 height: 20,
-                                color: Colors.white,
+                                color:Colors.orange,
                               ),
                             ),
                           ],
@@ -326,7 +327,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
                             ),
                             child: Icon(
                               Icons.apps,
-                              color: Colors.white,
+                              color: Colors.orange,
                             ),
                           )
                         : Container(
@@ -486,15 +487,22 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                     Padding(
                       padding:
                           const EdgeInsets.only(left: 12, top: 12, right: 12),
-                      child: Text(
-                        title,
-                        style: TextStyle(
+                      child: Html(
+                        data: title,
+                        defaultTextStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                         ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
                       ),
+                      // Text(
+                      //   title,
+                      //   style: TextStyle(
+                      //     color: Colors.white,
+                      //     fontSize: 18,
+                      //   ),
+                      //   overflow: TextOverflow.ellipsis,
+                      //   maxLines: 2,
+                      // ),
                     ),
                     Padding(
                       padding:
@@ -547,16 +555,25 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text(
-                              title,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 3,
-                              style: TextStyle(
+                            Html(
+                              data: title,
+                              defaultTextStyle: TextStyle(
                                 fontSize: 16.0,
                                 color: Color(0xFF325384),
                                 fontWeight: FontWeight.w400,
                               ),
+                              shrinkToFit: true,
                             ),
+                            // Text(
+                            //   title,
+                            //   overflow: TextOverflow.ellipsis,
+                            //   maxLines: 3,
+                            //   style: TextStyle(
+                            //     fontSize: 16.0,
+                            //     color: Color(0xFF325384),
+                            //     fontWeight: FontWeight.w400,
+                            //   ),
+                            // ),
                             Wrap(
                               crossAxisAlignment: WrapCrossAlignment.center,
                               children: <Widget>[

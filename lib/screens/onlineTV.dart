@@ -11,7 +11,6 @@ class OnlineTv extends StatefulWidget {
   @override
   _OnlineTvState createState() => _OnlineTvState();
 }
-
 class _OnlineTvState extends State<OnlineTv> {
   @override
   void initState() {
