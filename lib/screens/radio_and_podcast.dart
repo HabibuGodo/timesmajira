@@ -116,7 +116,7 @@ class _PlayerWidgetState extends State<PlayerWidget>
         children: <Widget>[
           Text(
             "Timesmajira Radio \n     Coming soon",
-            style: TextStyle(fontSize: 28),
+            style: TextStyle(fontSize: 28,color: Colors.orange),
           ),
           ClipRRect(
             borderRadius: BorderRadius.all(

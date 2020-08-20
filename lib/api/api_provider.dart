@@ -7,7 +7,7 @@ import 'package:path/path.dart' as path;
 class ApiProvider extends BaseCacheManager {
   var responseData;
   static final String _baseUrl =
-      'https://timesmajira.co.tz/wp-json/wp/v2/posts?_embed&per_page=50';
+      'https://timesmajira.co.tz/wp-json/wp/v2/posts?_embed&per_page=100';
   static final String _key = 'Basic Ym1sYXRhOkN1ZGRsZXoyMDE5Lg==';
   static final String _acceptance = 'application/json';
 
@@ -31,7 +31,7 @@ class ApiProvider extends BaseCacheManager {
       : super(
           key,
           maxAgeCacheObject: Duration(days: 7),
-          maxNrOfCacheObjects: 50,
+          maxNrOfCacheObjects: 100,
         );
 
   @override

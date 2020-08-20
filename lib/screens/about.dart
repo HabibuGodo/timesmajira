@@ -63,29 +63,56 @@ class About extends StatelessWidget {
                     child: CircleAvatar(
                       maxRadius: 50.0,
                       minRadius: 50.0,
-                      backgroundImage: AssetImage("assets/logo/logo_old.jpg"),
+                      backgroundImage: AssetImage("assets/logo/logonew1.png"),
                     ),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Container(
-                    child: Text(
-                      'TimesMajira',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Times',
+                            style: Theme.of(context).textTheme.title.merge(
+                                  TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 28.0,
+                                      fontWeight: FontWeight.bold
+                                      // Color(0xFF325384),
+                                      ),
+                                ),
+                          ),
+                          TextSpan(
+                            text: "majira",
+                            style: Theme.of(context).textTheme.subtitle.merge(
+                                  TextStyle(
+                                      color: Colors.orange,
+                                      // Color(0xFF325384),
+                                      fontSize: 30.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                          ),
+                        ],
+                      ),
                     ),
+                    // Text(
+                    //   'TimesMajira',
+                    //   style: TextStyle(
+                    //       color: Colors.white,
+                    //       fontSize: 32,
+                    //       fontWeight: FontWeight.bold),
+                    // ),
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             Container(
-              margin: EdgeInsets.only(left: 20, right: 10),
+              margin: EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 about,
                 textAlign: TextAlign.center,
@@ -103,7 +130,7 @@ class About extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(left: 10, top: 90),
+                      margin: EdgeInsets.only(left: 10, top: 10),
                       child: Text(
                         "Email Us: ",
                         style: TextStyle(
@@ -113,7 +140,7 @@ class About extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 15, top: 90),
+                      margin: EdgeInsets.only(left: 10, top: 10),
                       child: Row(
                         children: <Widget>[
                           InkWell(
@@ -121,7 +148,7 @@ class About extends StatelessWidget {
                             child: Text(
                               "kivulibussinesscare@gmail.com",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.orange,
                                 fontSize: 16,
                               ),
                             ),
@@ -131,7 +158,6 @@ class About extends StatelessWidget {
                     ),
                   ],
                 ),
-                
               ],
             ),
           ],

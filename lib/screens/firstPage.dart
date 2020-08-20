@@ -55,7 +55,7 @@ class _FirstPageState extends State<FirstPage> {
     double paddingTop = mediaQuery.padding.top;
     return Scaffold(
       body: Container(
-        color: Colors.grey.withOpacity(0.5),
+        color: Colors.white.withOpacity(0.5),
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -362,23 +362,35 @@ class WidgetLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 72.0,
+      height: 65.0,
       child: ListTile(
         leading: CircleAvatar(
-          maxRadius: 35.0,
-          minRadius: 35.0,
-          backgroundImage: AssetImage("assets/logo/logo_old.jpg"),
+          maxRadius: 30.0,
+          minRadius: 30.0,
+          backgroundImage: AssetImage("assets/logo/logonew1.png"),
         ),
         title: RichText(
           text: TextSpan(
             children: [
               TextSpan(
-                text: 'Timesmajira \n',
+                text: 'Times',
                 style: Theme.of(context).textTheme.title.merge(
                       TextStyle(
                         color: Colors.white,
                         fontSize: 28.0,
+                        fontWeight: FontWeight.bold
                         // Color(0xFF325384),
+                      ),
+                    ),
+              ),
+              TextSpan(
+                text: "majira \n",
+                style: Theme.of(context).textTheme.subtitle.merge(
+                      TextStyle(
+                        color: Colors.orange,
+                        // Color(0xFF325384),
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
               ),

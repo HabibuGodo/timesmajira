@@ -85,8 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             InkWell(
                               onTap: () => _launchInApp(urlFb),
-                              child: Image.asset("assets/icons/facebook.png",
-                                  width: 35, height: 22, color: Colors.orange,),
+                              child: Image.asset(
+                                "assets/icons/facebook.png",
+                                width: 35,
+                                height: 22,
+                                color: Colors.orange,
+                              ),
                             ),
                             InkWell(
                               onTap: () => _launchInApp(urlTwitter),
@@ -94,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "assets/icons/twitter.png",
                                 width: 35,
                                 height: 18,
-                                color : Colors.orange,
+                                color: Colors.orange,
                               ),
                             ),
                             InkWell(
@@ -110,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "assets/icons/youtube.png",
                                 width: 23,
                                 height: 20,
-                                color:Colors.orange,
+                                color: Colors.orange,
                               ),
                             ),
                           ],
@@ -425,8 +429,11 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
       return ListView.separated(
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
-          String imageUrl =
-              dataPost[index]['_embedded']['wp:featuredmedia'][0]['source_url'];
+          String imageUrl = dataPost[index]['_embedded']['wp:featuredmedia'] ==
+                  null
+              ? "https://pbs.twimg.com/profile_images/1282921492435607553/4g1xcHPG_400x400.jpg"
+              : dataPost[index]['_embedded']['wp:featuredmedia'][0]
+                  ['source_url'];
           String title = dataPost[index]['title']['rendered'];
           String category = dataPost[index]['categories'].toString();
           if (index == 0) {
@@ -550,7 +557,7 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                   children: <Widget>[
                     Expanded(
                       child: SizedBox(
-                        height: 80.0,
+                        height: 90.0,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -558,11 +565,10 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                             Html(
                               data: title,
                               defaultTextStyle: TextStyle(
-                                fontSize: 16.0,
+                                fontSize: 15.0,
                                 color: Color(0xFF325384),
                                 fontWeight: FontWeight.w400,
                               ),
-                              shrinkToFit: true,
                             ),
                             // Text(
                             //   title,
@@ -582,11 +588,11 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                                   color: Color(0xFF325384).withOpacity(0.5),
                                   size: 12.0,
                                 ),
-                                SizedBox(width: 4.0),
+                                SizedBox(width: 3.0),
                                 Text(
                                   "Soma zaidi",
                                   style: TextStyle(
-                                    fontSize: 12.0,
+                                    fontSize: 11.0,
                                     color: Color(0xFF325384).withOpacity(0.5),
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -607,8 +613,8 @@ class _WidgetLatestPostsState extends State<WidgetLatestPosts> {
                           fit: BoxFit.cover,
                           placeholder: AssetImage('assets/gif/loading.gif'),
                           image: CacheImage(imageUrl),
-                          height: 72.0,
-                          width: 72.0,
+                          height: 75.0,
+                          width: 75.0,
                         ),
 
                         // FadeInImage.assetNetwork(

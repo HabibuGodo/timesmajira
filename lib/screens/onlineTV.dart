@@ -11,6 +11,7 @@ class OnlineTv extends StatefulWidget {
   @override
   _OnlineTvState createState() => _OnlineTvState();
 }
+
 class _OnlineTvState extends State<OnlineTv> {
   @override
   void initState() {
@@ -79,8 +80,8 @@ class _OnlineTvState extends State<OnlineTv> {
                 Text(
                   _onlineTv.title,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+                    color: Colors.orange,
+                    fontSize: 25,
                     fontWeight: FontWeight.w600,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -136,7 +137,7 @@ class _OnlineTvState extends State<OnlineTv> {
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         padding: EdgeInsets.all(10),
-        height: 140,
+        height: 110,
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -150,7 +151,7 @@ class _OnlineTvState extends State<OnlineTv> {
               fit: BoxFit.cover,
               placeholder: AssetImage('assets/gif/loading.gif'),
               image: CacheImage(video.thumbnailUrl),
-              width: 150,
+              width: 140,
             ),
             SizedBox(
               width: 10,

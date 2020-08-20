@@ -27,17 +27,17 @@ class IntroContent extends StatefulWidget {
 
 int currentIndexPage = 0;
 double currentPos = 0.0;
-const titles = ['Habari', 'Michezo', 'Breaking News'];
+const titles = ['Habari', 'Michezo', 'Online Tv'];
 const description = [
   'Pata habari za uhakika zinazojiri ndani ya nchi na duniani kote.',
   'Habari zote bora za michezo zilizoandaliwa na waandishi mashughuri.',
-  'Pata habari zinazojiri hivi punde.'
+  'Tazama matukio mbalimbali kupitia Timesmajira Online Tv.'
 ];
 const baseImgUrl = 'assets/images';
 const _images = [
   '$baseImgUrl/Habari_logo.jpg',
   '$baseImgUrl/sports.png',
-  '$baseImgUrl/breaking.jpg'
+  '$baseImgUrl/OnlineTv.jpg'
 ];
 
 class _IntroContentState extends State<IntroContent> {
@@ -72,8 +72,8 @@ class _IntroContentState extends State<IntroContent> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          height: 200,
-                          width: 200,
+                          height: 178,
+                          width: 178,
                           child: Center(
                             child: Image.asset(
                               _images[i],
@@ -82,20 +82,23 @@ class _IntroContentState extends State<IntroContent> {
                               // color: Colors.white,
                             ),
                           ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(150),
-                              color: Colors.black),
+                          // decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(150),
+                          //     color: Colors.black),
                         ),
-                        SizedBox(height: 30),
+                        SizedBox(height: 30), 
                         Text(
                           titles[i],
                           style: TextStyle(color: Colors.black54, fontSize: 30),
                         ),
                         SizedBox(height: 15),
-                        Text(
-                          description[i],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.grey, fontSize: 18),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0, right: 20),
+                          child: Text(
+                            description[i],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.grey, fontSize: 18),
+                          ),
                         ),
                         SizedBox(height: 30),
                         currentIndexPage == 2
@@ -114,12 +117,12 @@ class _IntroContentState extends State<IntroContent> {
                                   height: 50,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: Colors.redAccent),
+                                      color: Colors.orange),
                                   child: Center(
                                     child: Text(
                                       'ANZISHA!',
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
+                                          color: Colors.black, fontSize: 20),
                                     ),
                                   ),
                                 ),

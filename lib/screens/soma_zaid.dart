@@ -33,9 +33,9 @@ class _SomaZaidiState extends State<SomaZaidi> {
 
   @override
   Widget build(BuildContext context) {
-    String imageUrl =
-        widget.postData['_embedded']['wp:featuredmedia'][0]['source_url'];
-
+    String imageUrl = widget.postData['_embedded']['wp:featuredmedia'] == null
+        ? 'https://pbs.twimg.com/profile_images/1282921492435607553/4g1xcHPG_400x400.jpg'
+        : widget.postData['_embedded']['wp:featuredmedia'][0]['source_url'];
     String content = widget.postData['content']['rendered'];
     //////Date convertion///////////////
     DateTime formatted = DateTime.parse(widget.postData['modified']);
@@ -111,7 +111,7 @@ class _SomaZaidiState extends State<SomaZaidi> {
                       children: <Widget>[
                         ListTile(
                           leading: Image.asset(
-                            "assets/logo/TimesMajira.png",
+                            "assets/logo/logonew1.png",
                             height: 35,
                             width: 35,
                             fit: BoxFit.cover,

@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   startTime() async {
-    var _duration = Duration(seconds: 2);
+    var _duration = Duration(seconds: 4);
     return Timer(_duration, navigationPage);
   }
 
@@ -42,12 +42,12 @@ class _SplashScreenState extends State<SplashScreen> {
           .copyWith(statusBarIconBrightness: Brightness.light),
     );
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Center(
         child: Container(
           height: MediaQuery.of(context).size.width,
           width: 300,
-          child: Image.asset('assets/logo/logo.png'),
+          child: Image.asset('assets/logo/logonew.png'),
         ),
       ),
     );

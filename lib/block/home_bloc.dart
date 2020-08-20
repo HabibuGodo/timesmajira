@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:timesmajira/api/api_repository.dart';
+import '../api/api_repository.dart';
 
 abstract class DataState {}
 
@@ -94,55 +94,4 @@ class HomeBloc extends Bloc<DataEvent, DataState> {
         yield DataFailed('Jaribu tena');
     }
   }
-}
-
-// if(event.category.contains("[31]")){
-//       final data = await apiRepository.fetchInternationalNews();
-//         if (data.error == null) {
-//           yield DataSuccess(data);
-//         } else {
-//           yield DataFailed('${data.error}');
-//         }
-//     }else if (event.category.contains("32")){
-//       final data = await apiRepository.fetchLocalNews();
-//         if (data.error == null) {
-//           yield DataSuccess(data);
-//         } else {
-//           yield DataFailed('${data.error}');
-//         }
-//     }else if (event.category.contains("33")){
-//       final data = await apiRepository.fetchRegionNews();
-//         if (data.error == null) {
-//           yield DataSuccess(data);
-//         } else {
-//           yield DataFailed('${data.error}');
-//         }
-//     }else if (event.category.contains("34")){
-//           final data = await apiRepository.fetchMagazetiNews();
-//         if (data.error == null) {
-//           yield DataSuccess(data);
-//         } else {
-//           yield DataFailed('${data.error}');
-//         }
-//     }else if (event.category.contains("35")){
-//       final data = await apiRepository.fetchSportNews();
-//         if (data.error == null) {
-//           yield DataSuccess(data);
-//         } else {
-//           yield DataFailed('${data.error}');
-//         }
-//     }else if (event.category.contains("39")){
-//       final data = await apiRepository.fetchMkalaNews();
-//         if (data.error == null) {
-//           yield DataSuccess(data);
-//         } else {
-//           yield DataFailed('${data.error}');
-//         }
-//     }else {
-//       final data = await apiRepository.fetchPostedNews();
-//         if (data.error == null) {
-//           yield DataSuccess(data);
-//         } else {
-//           yield DataFailed('${data.error}');
-//         }
-//     }
+} 
