@@ -2,6 +2,7 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
+import 'package:share/share.dart';
 import 'package:timesmajira/services/ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -37,6 +38,7 @@ class _SomaZaidiState extends State<SomaZaidi> {
         ? 'https://pbs.twimg.com/profile_images/1282921492435607553/4g1xcHPG_400x400.jpg'
         : widget.postData['_embedded']['wp:featuredmedia'][0]['source_url'];
     String content = widget.postData['content']['rendered'];
+    String title = widget.postData['title']['rendered'];
     //////Date convertion///////////////
     DateTime formatted = DateTime.parse(widget.postData['modified']);
     var formatter = new DateFormat('MMM dd, yyyy');
@@ -111,7 +113,7 @@ class _SomaZaidiState extends State<SomaZaidi> {
                       children: <Widget>[
                         ListTile(
                           leading: Image.asset(
-                            "assets/logo/logonew1.png",
+                            "assets/logo/logosmall.png",
                             height: 35,
                             width: 35,
                             fit: BoxFit.cover,
@@ -119,6 +121,23 @@ class _SomaZaidiState extends State<SomaZaidi> {
                           title: Text(
                             postDate,
                             style: Theme.of(context).textTheme.subtitle,
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(
+                              Icons.share,
+                            ),
+                            iconSize: 30,
+                            color: Colors.orange,
+                            splashColor: Colors.purple,
+                            onPressed: () {
+                              final RenderBox box = context.findRenderObject();
+                              Share.share(
+                                title,
+                                subject: content,
+                                sharePositionOrigin:
+                                    box.localToGlobal(Offset.zero) & box.size,
+                              );
+                            },
                           ),
                         ),
                         SizedBox(height: 9),

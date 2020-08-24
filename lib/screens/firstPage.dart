@@ -367,7 +367,7 @@ class WidgetLogo extends StatelessWidget {
         leading: CircleAvatar(
           maxRadius: 30.0,
           minRadius: 30.0,
-          backgroundImage: AssetImage("assets/logo/logonew1.png"),
+          backgroundImage: AssetImage("assets/logo/logosmall.png"),
         ),
         title: RichText(
           text: TextSpan(

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_radio/flutter_radio.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,6 +41,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   audioStart() async {
+    await FlutterDownloader.initialize(debug: true);
     await FlutterRadio.audioStart();
   }
 

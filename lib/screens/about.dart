@@ -61,8 +61,8 @@ class About extends StatelessWidget {
                     height: 100,
                     margin: EdgeInsets.only(top: 20),
                     child: CircleAvatar(
-                      maxRadius: 50.0,
-                      minRadius: 50.0,
+                      maxRadius: 30.0,
+                      minRadius: 30.0,
                       backgroundImage: AssetImage("assets/logo/logonew1.png"),
                     ),
                   ),

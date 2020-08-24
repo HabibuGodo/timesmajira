@@ -106,7 +106,7 @@ class _GazetiLeoState extends State<GazetiLeo> {
         },
         label: Column(
           children: <Widget>[
-            Icon(Icons.file_download),
+            Icon(Icons.cloud_download),
             Text(
               'Download',
               style: TextStyle(
@@ -131,10 +131,40 @@ class _GazetiLeoState extends State<GazetiLeo> {
       ),
       body: Container(
         child: Center(
-          child: Text(
-            "Huduma hii itakujia hivi punde..",
-            style: TextStyle(fontSize: 20),
-          ),
+          child:  _buildActionForTask(downloadId)
+          
+          // Stack(
+          //   children: <Widget>[
+              // Container(
+              //   width: 400,
+              //   height: 500,
+              //   decoration: BoxDecoration(
+              //     image: DecorationImage(
+              //       fit: BoxFit.cover,
+              //       alignment: Alignment.center,
+              //       colorFilter: ColorFilter.mode(
+              //           Colors.black.withOpacity(0.5), BlendMode.dstATop),
+              //       image: AssetImage("assets/images/magazeti.jpg"),
+              //     ),
+              //   ),
+
+                // width: 300,
+                // height: 400,
+                // color: Colors.black.withOpacity(0.5),
+                // child: Image(image: AssetImage('assets/images/magazeti.jpg')),
+              // ),
+              // Positioned(
+              //   top: 185,
+              //   left: 120,
+              //   child: _buildActionForTask(downloadId),
+              // ),
+            //],
+          // ),
+
+          // Text(
+          //   "Huduma hii itakujia hivi punde..",
+          //   style: TextStyle(fontSize: 20),
+          // ),
         ),
       ),
     );

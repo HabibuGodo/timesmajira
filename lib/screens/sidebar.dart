@@ -14,6 +14,32 @@
 //   _SideBarState createState() => _SideBarState();
 // }
 
+
+
+
+// IconButton(
+//                               icon: Icon(
+//                                 Icons.share,
+//                               ),
+//                               iconSize: 50,
+//                               color: Colors.z,
+//                               splashColor: Colors.purple,
+//                               onPressed: () {},
+//                             ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // class _SideBarState extends State<SideBar> {
 //   @override
 //   Widget build(BuildContext context) {
