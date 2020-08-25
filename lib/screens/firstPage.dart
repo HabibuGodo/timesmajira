@@ -87,148 +87,164 @@ class _FirstPageState extends State<FirstPage> {
               ),
             ),
             SizedBox(height: 16.0),
-            ListTile(
-              leading: Icon(
-                Icons.today,
-                color: Colors.orange,
-                size: 38,
-              ),
-              title: Text(
-                'Habari',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                ),
-              ),
-              onTap: () {
-                // _interstitialAd.show();
-                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
-                Navigator.push(
-                  context,
-                  MyCustomRoute(
-                    builder: (context) => HomeScreen(),
+            Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.1),
+                      BlendMode.dstATop,
+                    ),
+                    image: AssetImage("assets/logo/logonew1.png"),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.radio,
-                color: Colors.orange,
-                size: 38,
-              ),
-              title: Text(
-                'Radio & Podcast',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
                 ),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MyCustomRoute(
-                    builder: (context) => RadioPlay(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.live_tv,
-                color: Colors.orange,
-                size: 38,
-              ),
-              title: Text(
-                'Online Tv',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                ),
-              ),
-              onTap: () {
-                // _interstitialAd.show();
-                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
-                Navigator.push(
-                  context,
-                  MyCustomRoute(
-                    builder: (context) => OnlineTv(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.archive,
-                color: Colors.orange,
-                size: 38,
-              ),
-              title: Text(
-                'Archive',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                ),
-              ),
-              onTap: () {
-                // _interstitialAd.show();
-                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
-                Navigator.push(
-                  context,
-                  MyCustomRoute(
-                    builder: (context) => ArchiveSreen(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.chrome_reader_mode,
-                color: Colors.orange,
-                size: 38,
-              ),
-              title: Text(
-                'Gazeti La Leo',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                ),
-              ),
-              onTap: () {
-                // _interstitialAd.show();
-                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
-                Navigator.push(
-                  context,
-                  MyCustomRoute(
-                    builder: (context) => GazetiLeo(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.info,
-                color: Colors.orange,
-                size: 38,
-              ),
-              title: Text(
-                'About Us',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                ),
-              ),
-              onTap: () {
-                // _interstitialAd.show();
-                // _interstitialAd = DisplayAds.createInterstitialAd()..load();
-                Navigator.push(
-                  context,
-                  MyCustomRoute(
-                    builder: (context) => About(),
-                  ),
-                );
-              },
-            ),
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(
+                        Icons.today,
+                        color: Colors.orange,
+                        size: 38,
+                      ),
+                      title: Text(
+                        'Habari',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
+                      ),
+                      onTap: () {
+                        // _interstitialAd.show();
+                        // _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                        Navigator.push(
+                          context,
+                          MyCustomRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.radio,
+                        color: Colors.orange,
+                        size: 38,
+                      ),
+                      title: Text(
+                        'Radio & Podcast',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MyCustomRoute(
+                            builder: (context) => RadioPlay(),
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.live_tv,
+                        color: Colors.orange,
+                        size: 38,
+                      ),
+                      title: Text(
+                        'Online Tv',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
+                      ),
+                      onTap: () {
+                        // _interstitialAd.show();
+                        // _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                        Navigator.push(
+                          context,
+                          MyCustomRoute(
+                            builder: (context) => OnlineTv(),
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.archive,
+                        color: Colors.orange,
+                        size: 38,
+                      ),
+                      title: Text(
+                        'Archive',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
+                      ),
+                      onTap: () {
+                        // _interstitialAd.show();
+                        // _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                        Navigator.push(
+                          context,
+                          MyCustomRoute(
+                            builder: (context) => ArchiveSreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.chrome_reader_mode,
+                        color: Colors.orange,
+                        size: 38,
+                      ),
+                      title: Text(
+                        'Gazeti La Leo',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
+                      ),
+                      onTap: () {
+                        // _interstitialAd.show();
+                        // _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                        Navigator.push(
+                          context,
+                          MyCustomRoute(
+                            builder: (context) => GazetiLeo(),
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.info,
+                        color: Colors.orange,
+                        size: 38,
+                      ),
+                      title: Text(
+                        'About Us',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
+                      ),
+                      onTap: () {
+                        // _interstitialAd.show();
+                        // _interstitialAd = DisplayAds.createInterstitialAd()..load();
+                        Navigator.push(
+                          context,
+                          MyCustomRoute(
+                            builder: (context) => About(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                )),
           ],
         ),
       ),
@@ -376,22 +392,21 @@ class WidgetLogo extends StatelessWidget {
                 text: 'Times',
                 style: Theme.of(context).textTheme.title.merge(
                       TextStyle(
-                        color: Colors.white,
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.bold
-                        // Color(0xFF325384),
-                      ),
+                          color: Colors.white,
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.bold
+                          // Color(0xFF325384),
+                          ),
                     ),
               ),
               TextSpan(
                 text: "majira \n",
                 style: Theme.of(context).textTheme.subtitle.merge(
                       TextStyle(
-                        color: Colors.orange,
-                        // Color(0xFF325384),
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.bold
-                      ),
+                          color: Colors.orange,
+                          // Color(0xFF325384),
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.bold),
                     ),
               ),
               TextSpan(

@@ -17,11 +17,13 @@ class _ArchiveSreenState extends State<ArchiveSreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
             alignment: Alignment.center,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5), BlendMode.dstATop),
-            image: AssetImage("assets/images/archive.jpg"),
+              Colors.black.withOpacity(0.2),
+              BlendMode.dstATop,
+            ),
+            image: AssetImage("assets/logo/logonew1.png"),
           ),
         ),
         child: Center(

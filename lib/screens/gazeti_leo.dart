@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:ext_storage/ext_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -13,12 +14,18 @@ class GazetiLeo extends StatefulWidget {
 }
 
 class _GazetiLeoState extends State<GazetiLeo> {
+  var strToday = '';
   int downloadProgress = 0;
   DownloadTaskStatus downloadStatus;
   ReceivePort _port = ReceivePort();
   String movieUrl = '';
   String downloadId;
   bool isLoad = false;
+  void initState() {
+    super.initState();
+
+    checkForDownload(); // check if movies is on firebase to download
+  }
 
   _init() {
     IsolateNameServer.registerPortWithName(
@@ -61,10 +68,33 @@ class _GazetiLeoState extends State<GazetiLeo> {
     }
   }
 
+  //METHOD TO CONVERT DATE
+  String getStrToday() {
+    var today = DateFormat().add_yMMMMd().format(DateTime.now());
+    var day = today.split(' ')[1].replaceFirst(',', '');
+    var strDay = today.split(' ')[1].replaceFirst(',', '');
+    if (strDay == '1') {
+      strDay = strDay + 'st';
+    } else if (strDay == '2') {
+      strDay = strDay + 'nd';
+    } else if (strDay == '3') {
+      strDay = strDay + 'rd';
+    } else {
+      strDay = strDay + 'th';
+    }
+
+    var strMonth = today.split(' ')[0];
+    var strYear = today.split(' ')[2];
+    strToday = '$strDay $strMonth, $strYear';
+    //return '$day$strMonth$strYear';
+    return '$day$strMonth';
+  }
+
   // check if movies is on firebase to download
   Future checkForDownload() async {
+    // file name format is daymonth eg. 25August
     StorageReference reference =
-        FirebaseStorage.instance.ref().child("magazeti/leo.mp4");
+        FirebaseStorage.instance.ref().child("magazeti/${getStrToday()}.pdf");
     String downloadURL = await reference.getDownloadURL();
     setState(() {
       movieUrl = downloadURL;
@@ -130,41 +160,34 @@ class _GazetiLeoState extends State<GazetiLeo> {
         title: Text("Gazeti La Leo"),
       ),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.2),
+              BlendMode.dstATop,
+            ),
+            image: AssetImage("assets/logo/logonew1.png"),
+          ),
+        ),
         child: Center(
-          child:  _buildActionForTask(downloadId)
-          
-          // Stack(
-          //   children: <Widget>[
-              // Container(
-              //   width: 400,
-              //   height: 500,
-              //   decoration: BoxDecoration(
-              //     image: DecorationImage(
-              //       fit: BoxFit.cover,
-              //       alignment: Alignment.center,
-              //       colorFilter: ColorFilter.mode(
-              //           Colors.black.withOpacity(0.5), BlendMode.dstATop),
-              //       image: AssetImage("assets/images/magazeti.jpg"),
-              //     ),
-              //   ),
-
-                // width: 300,
-                // height: 400,
-                // color: Colors.black.withOpacity(0.5),
-                // child: Image(image: AssetImage('assets/images/magazeti.jpg')),
-              // ),
-              // Positioned(
-              //   top: 185,
-              //   left: 120,
-              //   child: _buildActionForTask(downloadId),
-              // ),
-            //],
-          // ),
-
-          // Text(
-          //   "Huduma hii itakujia hivi punde..",
-          //   style: TextStyle(fontSize: 20),
-          // ),
+          child: movieUrl != ''
+              ? _buildActionForTask(downloadId)
+              : Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20, left: 20),
+                    child: Text(
+                      "Tafadhari subiri punde utalipata gazeti la leo $strToday",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
         ),
       ),
     );

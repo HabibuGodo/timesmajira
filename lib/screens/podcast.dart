@@ -16,11 +16,13 @@ class _PodcastState extends State<Podcast> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            fit: BoxFit.cover,
-            alignment: Alignment.centerRight,
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5), BlendMode.dstATop),
-            image: AssetImage("assets/images/podcast.jpg"),
+              Colors.black.withOpacity(0.2),
+              BlendMode.dstATop,
+            ),
+            image: AssetImage("assets/logo/logonew1.png"),
           ),
         ),
         child: Center(
