@@ -39,6 +39,7 @@ class _SomaZaidiState extends State<SomaZaidi> {
         : widget.postData['_embedded']['wp:featuredmedia'][0]['source_url'];
     String content = widget.postData['content']['rendered'];
     String title = widget.postData['title']['rendered'];
+    String link = widget.postData['link'];
     //////Date convertion///////////////
     DateTime formatted = DateTime.parse(widget.postData['modified']);
     var formatter = new DateFormat('MMM dd, yyyy');
@@ -132,7 +133,7 @@ class _SomaZaidiState extends State<SomaZaidi> {
                             onPressed: () {
                               final RenderBox box = context.findRenderObject();
                               Share.share(
-                                title,
+                                link,
                                 subject: content,
                                 sharePositionOrigin:
                                     box.localToGlobal(Offset.zero) & box.size,

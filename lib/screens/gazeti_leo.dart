@@ -1,12 +1,13 @@
-import 'dart:isolate';
+import 'dart:io';
 import 'dart:ui';
-
-import 'package:ext_storage/ext_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:timesmajira/utility/fadetransation.dart';
 
 class GazetiLeo extends StatefulWidget {
   @override
@@ -16,56 +17,14 @@ class GazetiLeo extends StatefulWidget {
 class _GazetiLeoState extends State<GazetiLeo> {
   var strToday = '';
   int downloadProgress = 0;
-  DownloadTaskStatus downloadStatus;
-  ReceivePort _port = ReceivePort();
-  String movieUrl = '';
-  String downloadId;
+  String gazetiUrl = '';
   bool isLoad = false;
+  String urlPDFPath = '';
   void initState() {
     super.initState();
-
-    checkForDownload(); // check if movies is on firebase to download
-  }
-
-  _init() {
-    IsolateNameServer.registerPortWithName(
-        _port.sendPort, 'downloader_send_port');
-    _port.listen((dynamic data) {
-      print('UI Isolate Callback: $data');
-      //String id = data[0];
-      DownloadTaskStatus status = data[1];
-      int progress = data[2];
-
-      setState(() {
-        downloadProgress = progress;
-        downloadStatus = status;
-      });
-    });
-    FlutterDownloader.registerCallback(downloadCallback);
-  }
-
-  static void downloadCallback(
-      String id, DownloadTaskStatus status, int progress) {
-    print(
-        'Isolate Callback: task ($id) is in status ($status) and process ($progress)');
-    final SendPort send =
-        IsolateNameServer.lookupPortByName('downloader_send_port');
-    send.send([id, status, progress]);
-  }
-
-  Future<PermissionStatus> _checkPermission() async {
-    // _isLoading = true;
-    PermissionStatus permission = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.storage);
-    if (permission != PermissionStatus.granted) {
-      Map<PermissionGroup, PermissionStatus> permisionStatus =
-          await PermissionHandler()
-              .requestPermissions([PermissionGroup.storage]);
-      return permisionStatus[PermissionGroup.storage] ??
-          PermissionStatus.unknown;
-    } else {
-      return permission;
-    }
+    // check if gazeti is on firebase to download
+    checkForDownload();
+    //initiate the file path
   }
 
   //METHOD TO CONVERT DATE
@@ -93,63 +52,66 @@ class _GazetiLeoState extends State<GazetiLeo> {
   // check if movies is on firebase to download
   Future checkForDownload() async {
     // file name format is daymonth eg. 25August
+    // firebase real name for live app = ${getStrToday()}
     StorageReference reference =
-        FirebaseStorage.instance.ref().child("magazeti/${getStrToday()}.pdf");
+        FirebaseStorage.instance.ref().child("magazeti/timesmajira.pdf");
     String downloadURL = await reference.getDownloadURL();
     setState(() {
-      movieUrl = downloadURL;
-      isLoad = true;
+      gazetiUrl = downloadURL;
+    });
+    readNewsPaper(gazetiUrl).then((f) {
+      setState(() {
+        urlPDFPath = f.path;
+      });
     });
   }
 
-  Future _requestDownload() async {
-    PermissionStatus permissionStatus = await _checkPermission();
-    if (permissionStatus == PermissionStatus.granted) {
-      String dir = await ExtStorage.getExternalStoragePublicDirectory(
-          ExtStorage.DIRECTORY_DOWNLOADS);
-      final taskId = await FlutterDownloader.enqueue(
-        url: movieUrl,
-        fileName: "Timesmajira.pdf",
-        savedDir: dir,
-        showNotification:
-            true, // show download progress in status bar (for Android)
-        openFileFromNotification:
-            true, // click on notification to open downloaded file (for Android)
-      );
-      downloadId = taskId;
+  Future<File> readNewsPaper(String url) async {
+    try {
+      var data = await http.get(url);
+      var bytes = data.bodyBytes;
+      var dir = await getApplicationDocumentsDirectory();
+      File file = File("${dir.path}/timesmajiraa.pdf");
+      File urlFile = await file.writeAsBytes(bytes);
+      return urlFile;
+    } catch (e) {
+      throw Exception("Tafadhari subiri");
     }
   }
 
-  void _stopDownload(String taskId) async {
-    await FlutterDownloader.cancel(taskId: taskId);
-  }
-
-  Future<bool> _openDownloadedFile(String taskId) {
-    return FlutterDownloader.open(taskId: taskId);
-  }
-
-  Widget _buildActionForTask(String taskId) {
-    if (downloadId == null || downloadStatus == DownloadTaskStatus.undefined) {
-      return new FloatingActionButton.extended(
-        onPressed: () {
-          _requestDownload();
-        },
-        label: Column(
-          children: <Widget>[
-            Icon(Icons.cloud_download),
-            Text(
-              'Download',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+  Widget buildActionForTask() {
+    return new FloatingActionButton.extended(
+      onPressed: () {
+        if (urlPDFPath != null) {
+          Navigator.push(
+            context,
+            MyCustomRoute(
+              builder: (context) => ReadGazeti(
+                path: urlPDFPath,
               ),
-            )
-          ],
-        ),
-        backgroundColor: Colors.black,
-      );
-    }
+            ),
+          );
+        } else {
+          Center(
+            child: SpinKitThreeBounce(color: Colors.orange, size: 50),
+          );
+        }
+      },
+      label: Column(
+        children: <Widget>[
+          Icon(Icons.folder_open),
+          Text(
+            'Soma Hapa',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      ),
+      backgroundColor: Colors.black,
+    );
   }
 
   @override
@@ -172,8 +134,8 @@ class _GazetiLeoState extends State<GazetiLeo> {
           ),
         ),
         child: Center(
-          child: movieUrl != ''
-              ? _buildActionForTask(downloadId)
+          child: gazetiUrl != ''
+              ? buildActionForTask()
               : Container(
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20, left: 20),
@@ -189,6 +151,77 @@ class _GazetiLeoState extends State<GazetiLeo> {
                   ),
                 ),
         ),
+      ),
+    );
+  }
+}
+
+class ReadGazeti extends StatefulWidget {
+  final String path;
+
+  const ReadGazeti({Key key, this.path}) : super(key: key);
+
+  @override
+  _ReadGazetiState createState() => _ReadGazetiState();
+}
+
+class _ReadGazetiState extends State<ReadGazeti> {
+  int _totalPages = 0;
+  int _currentPage = 0;
+  bool pdfReady = false;
+  PDFViewController _pdfViewController;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text('Gazeti La Leo'),
+      ),
+      body: Stack(
+        children: <Widget>[
+          PDFView(
+            fitEachPage: true,
+            filePath: widget.path,
+            autoSpacing: true,
+            enableSwipe: true,
+            pageSnap: true,
+            //swipeHorizontal: true,
+            onRender: (_pages) {
+              setState(() {
+                _totalPages = _pages;
+                pdfReady = true;
+              });
+            },
+            onViewCreated: (PDFViewController vc) {
+              _pdfViewController = vc;
+            },
+            onPageChanged: (int page, int total) {
+              setState(() {
+                _currentPage = page + 1;
+                _totalPages = total;
+                //_pdfViewController.setPage(_currentPage);
+              });
+            },
+            onPageError: (page, error) {},
+          ),
+          !pdfReady
+              ? Center(
+                  child: SpinKitThreeBounce(color: Colors.orange, size: 50),
+                )
+              : Offstage(),
+        ],
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Text(
+            "Uk $_currentPage / $_totalPages",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+        ],
       ),
     );
   }

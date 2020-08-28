@@ -1,14 +1,8 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_radio/flutter_radio.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:timesmajira/screens/homescreen.dart';
-// import 'package:uni_links/uni_links.dart';
 import './screens/appintro.dart';
 import './screens/splashscreen.dart';
 import './utility/fadetransation.dart';
@@ -41,7 +35,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   audioStart() async {
-    await FlutterDownloader.initialize(debug: true);
     await FlutterRadio.audioStart();
   }
 
