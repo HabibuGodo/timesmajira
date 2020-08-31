@@ -46,7 +46,7 @@ dependencies:
   flutter_spinkit: "^4.1.2"
   permission_handler: '^4.3.0' 
   share: ^0.6.4+3
-  flutter_pdfview: 
+  advance_pdf_viewer_fork: any 
   # cloud_firestore: ^0.13.7
   # uni_links: any
   
